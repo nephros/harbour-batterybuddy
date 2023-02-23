@@ -72,8 +72,7 @@ Battery::Battery(Settings* newSettings, Logger* newLogger, QObject* parent) : QO
     filenames.clear();
     filenames << "/sys/class/power_supply/usb/present"
               << "/sys/class/power_supply/dollar_cove_charger/present"
-              << "/sys/class/power_supply/axp20x-usb/present"
-              << "/sys/class/power_supply/axp20x-ac/present";
+              << "/sys/class/power_supply/axp20x-usb/present";
 
     foreach(const QString& file, filenames) {
         if(!chargerConnectedFile && QFile::exists(file)) {
@@ -83,6 +82,20 @@ Battery::Battery(Settings* newSettings, Logger* newLogger, QObject* parent) : QO
     }
 
     logL("Charger status file: " + (chargerConnectedFile ? chargerConnectedFile->fileName() : notFound));
+
+    // Number: 0 or 1
+    filenames.clear();
+    filenames << "/sys/class/power_supply/ac/present"
+              << "/sys/class/power_supply/axp813-ac/present";
+
+    foreach(const QString& file, filenames) {
+        if(!acConnectedFile && QFile::exists(file)) {
+            acConnectedFile = new QFile(file, this);
+            break;
+        }
+    }
+
+    logL("AC status file: " + (acConnectedFile ? acConnectedFile->fileName() : notFound));
 
     // Number: temperature
     filenames.clear();
@@ -177,6 +190,16 @@ void Battery::updateData()
         chargerConnectedFile->close();
     }
 
+    if(acConnectedFile && acConnectedFile->open(QIODevice::ReadOnly)) {
+        nextAcConnected = acConnectedFile->readLine().trimmed().toInt();
+        if(nextAcConnected != acConnected) {
+            acConnected = nextAcConnected;
+            emit acConnectedChanged(acConnected);
+            logM(QString("AC: %1").arg(acConnected ? "connected" : "disconnected"));
+        }
+        acConnectedFile->close();
+    }
+
     if(stateFile && stateFile->open(QIODevice::ReadOnly)) {
         nextState = (QString(stateFile->readLine().trimmed().toLower()));
         if(nextState != state) {
@@ -190,7 +213,7 @@ void Battery::updateData()
     if(currentFile && currentFile->open(QIODevice::ReadOnly)) {
         current = currentFile->readLine().trimmed().toInt();
         if(!invertDecided) {
-            invertCurrent = (!chargerConnected && current > 10);
+            invertCurrent = (!chargerConnected && !acConnected && current > 10);
             if(invertCurrent) logL("Battery current inverted");
             else              logL("Battery current not inverted");
             invertDecided = true;
@@ -243,3 +266,5 @@ int Battery::getTemperature(){ return temperature; }
 bool Battery::getChargingEnabled() { return chargingEnabled; }
 
 bool Battery::getChargerConnected() { return chargerConnected; }
+
+bool Battery::getAcConnected() { return acConnected; }
