@@ -45,7 +45,7 @@ Item {
         property int counter: 0
         running: (enableLowBatteryAnimation
                   && !battery.chargerConnected
-                  && !ac.chargerConnected
+                  && !battery.acConnected
                   && _charge <= settings.lowAlert)
         repeat: true
         interval: 400
