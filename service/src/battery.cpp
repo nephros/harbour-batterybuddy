@@ -123,8 +123,7 @@ Battery::Battery(Logger* newLogger, bool loglevelSet, QCoreApplication *app, QOb
     filenames.clear();
     filenames << "/sys/class/power_supply/usb/present"
               << "/sys/class/power_supply/dollar_cove_charger/present"
-              << "/sys/class/power_supply/axp20x-usb/present"
-              << "/sys/class/power_supply/axp20x-ac/present";
+              << "/sys/class/power_supply/axp20x-usb/present";
 
     foreach(const QString& file, filenames) {
         if(!chargerConnectedFile && QFile::exists(file)) {
@@ -137,7 +136,8 @@ Battery::Battery(Logger* newLogger, bool loglevelSet, QCoreApplication *app, QOb
 
     // Charger connected, bool (number): 0 or 1
     filenames.clear();
-    filenames << "/sys/class/power_supply/ac/present";
+    filenames << "/sys/class/power_supply/ac/present"
+              << "/sys/class/power_supply/axp813-ac/present";
 
     foreach(const QString& file, filenames) {
         if(!acConnectedFile && QFile::exists(file)) {
