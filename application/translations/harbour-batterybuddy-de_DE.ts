@@ -29,11 +29,11 @@
     </message>
     <message>
         <source>Contributors</source>
-        <translation type="unfinished"></translation>
+        <translation>Mitarbeit</translation>
     </message>
     <message>
         <source>A modified version of %1 by %2 in the emoji pack %3 is used in the logo. License: %4</source>
-        <translation type="unfinished"></translation>
+        <translation>Das Logo verwendet eine modifizierte Version der %1 von %2 im Emojipack %3. Lizenz: %4</translation>
     </message>
 </context>
 <context>
@@ -309,59 +309,59 @@
     <name>QObject</name>
     <message>
         <source>Never</source>
-        <translation type="unfinished">Nie</translation>
+        <translation>Nie</translation>
     </message>
     <message>
         <source>30 seconds</source>
-        <translation type="unfinished"></translation>
+        <translation>30 Sekunden</translation>
     </message>
     <message>
         <source>2.5 minutes</source>
-        <translation type="unfinished"></translation>
+        <translation>2,5 Minuten</translation>
     </message>
     <message>
         <source>5 minutes</source>
-        <translation type="unfinished"></translation>
+        <translation>5 Minuten</translation>
     </message>
     <message>
         <source>10 minutes</source>
-        <translation type="unfinished"></translation>
+        <translation>10 Minuten</translation>
     </message>
     <message>
         <source>15 minutes</source>
-        <translation type="unfinished"></translation>
+        <translation>15 Minuten</translation>
     </message>
     <message>
         <source>30 minutes</source>
-        <translation type="unfinished"></translation>
+        <translation>30 Minuten</translation>
     </message>
     <message>
         <source>1 hour</source>
-        <translation type="unfinished"></translation>
+        <translation>1 Stunde</translation>
     </message>
     <message>
         <source>2 hours</source>
-        <translation type="unfinished"></translation>
+        <translation>2 Stunden</translation>
     </message>
     <message>
         <source>4 hours</source>
-        <translation type="unfinished"></translation>
+        <translation>4 Stunden</translation>
     </message>
     <message>
         <source>8 hours</source>
-        <translation type="unfinished"></translation>
+        <translation>8 Stunden</translation>
     </message>
     <message>
         <source>10 hours</source>
-        <translation type="unfinished"></translation>
+        <translation>10 Stunden</translation>
     </message>
     <message>
         <source>12 hours</source>
-        <translation type="unfinished"></translation>
+        <translation>12 Stunden</translation>
     </message>
     <message>
         <source>24 hours</source>
-        <translation type="unfinished"></translation>
+        <translation>24 Stunden</translation>
     </message>
 </context>
 <context>
@@ -475,15 +475,15 @@
     </message>
     <message>
         <source>Health notification settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Zustandsbenachrichtigung</translation>
     </message>
     <message>
         <source>Notification threshold</source>
-        <translation type="unfinished"></translation>
+        <translation>Benachrichtigungsschwelle</translation>
     </message>
     <message>
         <source>Maximum Charge Current</source>
-        <translation type="unfinished"></translation>
+        <translation>Maximaler Ladestrom</translation>
     </message>
 </context>
 </TS>
