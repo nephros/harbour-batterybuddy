@@ -16,6 +16,12 @@ DEFINES += QT_NO_DEBUG_OUTPUT
 
 LIBS += -lkeepalive -lnemonotifications-qt5
 
+# build position-independent executable:
+QMAKE_CXXFLAGS += -Werror
+QMAKE_CFLAGS += -fPIE
+QMAKE_CXXFLAGS += -fPIE
+QMAKE_LFLAGS += -pie
+
 HEADERS += \
     src/battery.h \
     src/logger.h \
