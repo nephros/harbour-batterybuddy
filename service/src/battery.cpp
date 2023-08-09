@@ -556,6 +556,10 @@ bool Battery::getAcConnected() {
     return acConnected;
 }
 
+bool Battery::canToggleCharging() {
+    return (chargingEnabledFile && (acConnected || chargerConnected));
+}
+
 void Battery::shutdown() {
     logM("Shutting down...");
     chargeNotification->close();

@@ -78,6 +78,7 @@ mv %{buildroot}%{_datadir}/%{name}/service/%{name}.service %{buildroot}%{_userun
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 %{_userunitdir}/%{name}.service
 %{_unitdir}/%{name}-oneshot.service
+%{_datadir}/dbus-1/interfaces/*.xml
 
 # >> files
 # << files

@@ -20,6 +20,7 @@
 
 #include "logger.h"
 #include "battery.h"
+#include "dbus.h"
 
 #include <signal.h>
 
@@ -72,8 +73,11 @@ int main(int argc, char** argv)
 
     Battery* battery = new Battery(logger, logLevelSet, &app);
 
+    DaemonInterface* iface = new DaemonInterface(battery, &app);
+
     // Exit gracefully on Ctrl-C and service stop
     QObject::connect(&app, SIGNAL(aboutToQuit()), battery, SLOT(shutdown()));
+    QObject::connect(&app, SIGNAL(aboutToQuit()), iface, SLOT(shutdown()));
     signal(SIGINT, app.exit);
     signal(SIGTERM, app.exit);
 
@@ -81,6 +85,7 @@ int main(int argc, char** argv)
 
     delete battery;
     delete logger;
+    delete iface;
 
     return retval;
 }

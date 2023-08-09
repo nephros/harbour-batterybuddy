@@ -51,6 +51,8 @@ public:
     int getTemperature();
     QString getHealth();
 
+    bool canToggleCharging();
+
 public slots:
     void updateData();
     void shutdown();
