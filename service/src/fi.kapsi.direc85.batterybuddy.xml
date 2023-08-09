@@ -3,15 +3,16 @@
     <interface name="fi.kapsi.direc85.batterybuddy">
         <method name="enableCharging"></method>
         <method name="disableCharging"></method>
+        <!--
         <method name="isChargingEnabled">
             <arg name="enabled" type="b" direction="out" />
         </method>
-        <!--
             <method name="canToggleCharging">
             <arg name="result" type="b" direction="out" />
             </method>
         -->
             <signal name="chargingEnabledChanged" />
             <property name="canToggleCharging" type="b" access="read"/>
+            <property name="chargingEnabled"   type="b" access="read"/>
         </interface>
     </node>

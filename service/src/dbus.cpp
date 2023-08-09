@@ -79,7 +79,7 @@ void DaemonInterface::shutdown() {
     }
 }
 
-bool DaemonInterface::isChargingEnabled() {
+bool DaemonInterface::chargingEnabled() {
     return m_battery->getChargingEnabled();
 }
 
