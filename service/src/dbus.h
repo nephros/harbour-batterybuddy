@@ -17,13 +17,19 @@ public:
     explicit DaemonInterface(Battery* battery = nullptr, QObject *parent = nullptr);
     virtual ~DaemonInterface();
 
+    Q_PROPERTY(bool canToggleCharging READ canToggleCharging NOTIFY canToggleChargingChanged);
+
 public slots:
     void enableCharging();
     void disableCharging();
     bool isChargingEnabled();
 
     bool canToggleCharging();
+
     void shutdown();
+
+signals:
+    void canToggleChargingChanged(bool state);
 
 private:
     void registerDBus();
