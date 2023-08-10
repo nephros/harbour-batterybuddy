@@ -7,6 +7,7 @@
 
 #include "battery.h"
 #include "logger.h"
+#include "dbus_interface.h"
 
 class DaemonInterfaceAdaptor;
 class DaemonInterface : public QObject, public QDBusContext
