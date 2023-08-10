@@ -48,9 +48,7 @@ Prolong your battery life.
 %qtc_make %{?_smp_mflags}
 
 # >> build post
-if [ -e service/src/batterybuddy_adaptor.h ]; then
-    cat service/src/batterybuddy_adaptor.h
-fi
+find . -name "batterybuddy_adaptor.h" | xargs cat
 # << build post
 
 %install

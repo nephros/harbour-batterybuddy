@@ -54,6 +54,6 @@ INSTALLS += dbus_iface
 
 # calls qdbusxml2cpp to generate batterybuddy_adaptor.h
 dbus_adaptor.files = src/fi.kapsi.direc85.batterybuddy.xml
-dbus_adaptor.source_flags = -c DaemonInterfaceAdaptor
-dbus_adaptor.header_flags = -c DaemonInterfaceAdaptor -i src/dbus_interface.h
+dbus_adaptor.source_flags = -v -c DaemonInterfaceAdaptor
+dbus_adaptor.header_flags = -v -c DaemonInterfaceAdaptor -i src/dbus_interface.h
 DBUS_ADAPTORS += dbus_adaptor
