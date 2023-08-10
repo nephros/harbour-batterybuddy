@@ -48,6 +48,9 @@ Prolong your battery life.
 %qtc_make %{?_smp_mflags}
 
 # >> build post
+if [ -e service/src/batterybuddy_adaptor.h ]; then
+    cat service/src/batterybuddy_adaptor.h
+fi
 # << build post
 
 %install
@@ -57,9 +60,6 @@ rm -rf %{buildroot}
 %qmake5_install
 
 # >> install post
-if [ -e service/src/batterybuddy_adaptor.h ]; then
-    cat service/src/batterybuddy_adaptor.h
-fi
 # << install post
 
 desktop-file-install --delete-original \
