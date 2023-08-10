@@ -4,21 +4,22 @@
 #include <QtCore/QObject>
 
 #include <QDBusContext>
+#include <QtDBus/QDBusAbstractAdaptor>
 
 #include "battery.h"
 #include "logger.h"
 
 class DaemonInterfaceAdaptor;
-class DaemonInterface : public QObject, public QDBusContext
+class DaemonInterface : public QObject, public QDBusContext, public QDBusAbstractAdaptor
 {
     Q_OBJECT
+    Q_CLASSINFO("D-Bus Interface", DBUS_SERVICE_NAME)
+    Q_PROPERTY(bool canToggleCharging READ canToggleCharging); // NOTIFY canToggleChargingChanged);
+    Q_PROPERTY(bool chargingEnabled READ chargingEnabled);
 
 public:
     explicit DaemonInterface(Battery* battery = nullptr, QObject *parent = nullptr);
     virtual ~DaemonInterface();
-
-    Q_PROPERTY(bool canToggleCharging READ canToggleCharging); // NOTIFY canToggleChargingChanged);
-    Q_PROPERTY(bool chargingEnabled READ chargingEnabled);
 
 public slots:
     void enableCharging();
