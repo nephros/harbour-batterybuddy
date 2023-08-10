@@ -57,6 +57,9 @@ rm -rf %{buildroot}
 %qmake5_install
 
 # >> install post
+if [ -e service/src/batterybuddy_adaptor.h ]; then
+    cat service/src/batterybuddy_adaptor.h
+fi
 # << install post
 
 desktop-file-install --delete-original \
