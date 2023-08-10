@@ -1,18 +1,20 @@
 <!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN" "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
 <node name="/daemon">
     <interface name="fi.kapsi.direc85.batterybuddy">
-        <method name="enableCharging"></method>
-        <method name="disableCharging"></method>
-        <!--
-        <method name="isChargingEnabled">
-            <arg name="enabled" type="b" direction="out" />
-        </method>
-            <method name="canToggleCharging">
-            <arg name="result" type="b" direction="out" />
+            <method name="enableCharging">
+                 <annotation name="org.freedesktop.DBus.Method.NoReply" value="true"/>
             </method>
-        -->
+            <method name="disableCharging">
+                 <annotation name="org.freedesktop.DBus.Method.NoReply" value="true"/>
+            </method>
+
+            <property name="canToggleCharging" type="b" access="read">
+                 <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="false"></annotation>
+            </property>
+            <property name="chargingEnabled"   type="b" access="read">
+                 <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="false"></annotation>
+            </property>
+
             <signal name="chargingEnabledChanged" />
-            <property name="canToggleCharging" type="b" access="read"/>
-            <property name="chargingEnabled"   type="b" access="read"/>
         </interface>
     </node>
