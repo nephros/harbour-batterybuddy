@@ -13,7 +13,6 @@ class DaemonInterfaceAdaptor;
 class DaemonInterface : public QObject, public QDBusContext
 {
     Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", DBUS_SERVICE_NAME)
 
     Q_PROPERTY(bool canToggleCharging READ canToggleCharging); // NOTIFY canToggleChargingChanged);
     Q_PROPERTY(bool chargingEnabled READ chargingEnabled);
