@@ -128,6 +128,7 @@ Battery::Battery(Logger* newLogger, bool loglevelSet, QCoreApplication *app, QOb
     const QStringList chargerFiles = {
         "/sys/class/power_supply/usb/present",
         "/sys/class/power_supply/dollar_cove_charger/present",
+        "/sys/class/power_supply/sgm41511_charger/online",
         "/sys/class/power_supply/axp20x-usb/present"
     };
 
@@ -143,6 +144,7 @@ Battery::Battery(Logger* newLogger, bool loglevelSet, QCoreApplication *app, QOb
     // Charger connected, bool (number): 0 or 1
     const QStringList acFiles = {
         "/sys/class/power_supply/ac/present",
+        "/sys/class/power_supply/ac/online",
         "/sys/class/power_supply/axp813-ac/present"
     };
 
@@ -197,7 +199,8 @@ Battery::Battery(Logger* newLogger, bool loglevelSet, QCoreApplication *app, QOb
         "/sys/class/power_supply/battery/input_suspend",              // e.g. Sony Xperia XA2
         "/sys/class/power_supply/battery/charging_enabled",           // e.g. for Sony Xperia Z3 Compact Tablet
         "/sys/class/power_supply/usb/charger_disable",                // e.g. for Jolla Phone
-        "/sys/class/power_supply/dollar_cove_battery/enable_charging" // e.g. for Jolla Tablet
+        "/sys/class/power_supply/dollar_cove_battery/enable_charging",// e.g. for Jolla Tablet
+        "/sys/class/power_supply/battery/charger.0/stop_charge"       // e.g. for Jolla C2
     };
 
     foreach(const QString& file, controlFiles) {
