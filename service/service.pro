@@ -19,6 +19,9 @@ DEFINES += QT_NO_DEBUG_OUTPUT
 
 LIBS += -lkeepalive -lnemonotifications-qt5
 
+# pkg-config does not seem to add this:
+INCLUDEPATH += /usr/include/nemonotifications-qt5
+
 HEADERS += \
     src/battery.h \
     src/logger.h \
