@@ -45,6 +45,7 @@ class Battery : public QObject
 
     // time_t? QDateTime? QString?
     Q_PROPERTY(int timeToFull READ getTimeToFull NOTIFY timeToFullChanged)
+    Q_PROPERTY(int timeToEmpty READ getTimeToEmpty NOTIFY timeToEmptyChanged)
 public:
     Battery(Settings* newSettings, Logger* newLogger, QObject* parent = nullptr);
     ~Battery();
@@ -61,6 +62,7 @@ public:
     int getTemperature();
 
     int getTimeToFull();
+    int getTimeToEmpty();
 
     Q_INVOKABLE static QString timeRemaining(int seconds)
     {
@@ -90,6 +92,7 @@ private:
     QFile* healthFile = nullptr;
 
     QFile* timeToFullFile = nullptr;
+    QFile* timeToEmptyFile = nullptr;
 
     // Default values:
     int charge = 100; // 100% full
@@ -105,6 +108,7 @@ private:
     float tempCorrectionFactor = 1.0; // PineTab outputs an integer in centi-centigrade
 
     int timeToFull = 0x7FFFFFFF; // This value means "unknown" (32-bit INT_MAX)
+    int timeToEmpty = 0x7FFFFFFF; // This value means "unknown" (32-bit INT_MAX)
 
     int enableChargingValue = 1;
     int disableChargingValue = 0;
@@ -132,6 +136,7 @@ signals:
     void healthChanged(QString);
     void temperatureChanged(int);
     void timeToFullChanged(int);
+    void timeToEmptyChanged(int);
 };
 
 #endif // BATTERY_H

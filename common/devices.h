@@ -76,6 +76,12 @@ const QStringList healthFiles = {
     "/sys/class/power_supply/axp20x-battery/health"
 };
 
+// int: Time remaining, in seconds
+const QStringList timeToEmptyFiles = {
+    "/sys/class/power_supply/battery/time_to_empty_now",
+    "/sys/class/power_supply/battery/time_to_empty"
+};
+
 // int: Time to full charge, in seconds
 const QStringList timeToFullFiles = {
     "/sys/class/power_supply/battery/time_to_full_now" // Jolla C2
