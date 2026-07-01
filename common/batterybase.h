@@ -125,8 +125,6 @@ protected:
     bool chargerIsEnabled = true;
 
     int nextCharge = charge;
-    int invertSign = 1;
-    bool invertDecided = false;
 
     bool nextUsbConnected = false;
     bool nextAcConnected = false;

@@ -16,6 +16,7 @@
  * Author: Matti Viljanen
  */
 #include "batterybase.h"
+#include <cmath> //for std::abs
 
 BatteryBase::BatteryBase(Logger* newLogger, QObject* parent) : QObject(parent)
 {
@@ -157,21 +158,7 @@ void BatteryBase::updateBaseData()
     }
 
     if(currentFile && currentFile->open(QIODevice::ReadOnly)) {
-        current = currentFile->readLine().trimmed().toInt();
-        if(!invertDecided) {
-            bool connected = usbConnected || acConnected;
-            if(connected && current <= -200) {
-                logL("Battery current inverted");
-                invertSign = -1;
-                invertDecided = true;
-            }
-            else if(connected && current >= 200) {
-                logL("Battery current not inverted");
-                invertSign = 1;
-                invertDecided = true;
-            }
-        }
-        current = invertSign * current;
+        current = std::abs(currentFile->readLine().trimmed().toInt());
         emit _currentChanged(current);
         logH(QString("Current: %1mA").arg(current / 1000));
         currentFile->close();
