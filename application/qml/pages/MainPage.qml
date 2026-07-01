@@ -148,7 +148,8 @@ Page {
                         value: statusText[battery.state]
                     }
                     MyDetailItem {
-                        label: qsTr("Health:")
+                        // used to read 'health' but people get confused
+                        label: qsTr("Warnings:")
                         value: healthText[battery.health]
                         visible: value !== "unknown"
                     }
