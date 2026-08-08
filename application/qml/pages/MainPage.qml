@@ -149,8 +149,8 @@ Page {
                     }
                     MyDetailItem {
                         // used to read 'health' but people get confused
-                        label: qsTr("Warnings:")
-                        value: healthText[battery.health]
+                        label: qsTr("Mood:")
+                        value: qsTr("Feeling %1", "values of %1 Can be good, warm, cold, ...").arg(healthText[battery.health]
                         visible: value !== "unknown"
                     }
                     MyDetailItem {

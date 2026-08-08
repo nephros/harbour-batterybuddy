@@ -346,7 +346,7 @@ Page {
                     wrapMode: Text.Wrap
                 }
 
-                SectionHeader { text: qsTr("Battery warning notification") }
+                SectionHeader { text: qsTr("Battery mood notification") }
 
                 ComboBox {
                     id: healthSelector
@@ -364,11 +364,11 @@ Page {
                     }
                 }
 
-                SectionHeader { text: qsTr("Warning notification interval") }
+                SectionHeader { text: qsTr("Mood notification interval") }
 
                 ComboBox {
                     id: healthIntervalCombo
-                    label: qsTr("Warning notification interval")
+                    label: qsTr("Mood notification interval")
                     menu: ContextMenu {
                         Repeater {
                             model: frequencyNames
