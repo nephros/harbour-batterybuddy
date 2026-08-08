@@ -330,7 +330,7 @@ Page {
 
                 Label {
                     x: Theme.paddingLarge
-                    text: qsTr("Warning notification settings")
+                    text: qsTr("Mood notification settings")
                     color: Theme.highlightColor
                 }
                 Label {
